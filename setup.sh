@@ -2,16 +2,13 @@
 # Original work Copyright (c) 2016 Tzutalin
 # For licensing, read LICENSE
 
-### path setup
-
 OPENCV_VERSION=3.3.0
-
-if [ ! -z "$1" ]
-  then
-    OPENCV_VERSION="$1"
-fi
-
-echo "Opnecv version ${OPENCV_VERSION}"
+while getopts "v:" opts; do
+    case ${opts} in
+        v) OPENCV_VERSION=${OPTARG} ;;
+    esac
+done
+echo "Using Open CV version ${OPENCV_VERSION}"
 
 SCRIPT=$(readlink -f $0)
 WD=`dirname $SCRIPT`
