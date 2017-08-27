@@ -4,7 +4,7 @@
 
 ### path setup
 
-OPENCV_VERSION=3.1.0
+OPENCV_VERSION=3.3.0
 
 if [ ! -z "$1" ]
   then
