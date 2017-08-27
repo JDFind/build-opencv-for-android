@@ -23,10 +23,17 @@ WD=`dirname $SCRIPT`
 # clone android-ndk-downloader
 if [ ! -d "${WD}/android-ndk-downloader" ]; then
     echo 'Cloning android-ndk-downloader'
-    git clone --recursive https://github.com/tzutalin/android-ndk-downloader.git
-    cd android-ndk-downloader
-    python download_ndk.py
+    git clone https://github.com/tzutalin/android-ndk-downloader.git
 fi
+
+# checkout latest android-ndk-downloader
+cd android-ndk-downloader
+git fetch
+git checkout master
+git pull
+
+# launch android-ndk-downloader
+python download_ndk.py
 
 # clone Open CV
 cd "${WD}"
@@ -34,7 +41,10 @@ if [ ! -d "${WD}/opencv" ]; then
     echo 'Cloning opencv'
     git clone https://github.com/opencv/opencv.git
 fi
+
+# checkout the specified version of OpenCV
 cd opencv
+git fetch
 git checkout -b "${OPENCV_VERSION}" "${OPENCV_VERSION}"
 
 # clone Open CV Contrib
@@ -43,7 +53,10 @@ if [ ! -d "${WD}/opencv_contrib" ]; then
     echo 'Cloning opencv_contrib'
     git clone https://github.com/opencv/opencv_contrib.git
 fi
+
+# checkout the specified version of OpenCV Contrib
 cd opencv_contrib
+git fetch
 git checkout -b "${OPENCV_VERSION}" "${OPENCV_VERSION}"
 
 cd "${WD}"
