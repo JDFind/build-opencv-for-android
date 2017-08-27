@@ -47,3 +47,6 @@ cd opencv_contrib
 git checkout -b "${OPENCV_VERSION}" "${OPENCV_VERSION}"
 
 cd "${WD}"
+
+echo "Press any key to continue..."
+read answer
