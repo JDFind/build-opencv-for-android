@@ -1,5 +1,4 @@
 #!/bin/bash
-NDK_ROOT="${1:-${NDK_ROOT}}"
 
 ### ABIs setup
 #declare -a ANDROID_ABI_LIST=("x86" "x86_64" "armeabi-v7a with NEON" "arm64-v8a")
@@ -34,7 +33,7 @@ do
 
     cmake -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DCMAKE_TOOLCHAIN_FILE="${WD}/android-cmake/android.toolchain.cmake" \
-          -DANDROID_NDK="${NDK_ROOT}" \
+          -DANDROID_NDK="${ANDROID_NDK_ROOT}" \
           -DANDROID_NATIVE_API_LEVEL=${API_LEVEL} \
           -DANDROID_ABI="${ANDROID_ABI}" \
           -D WITH_CUDA=OFF \
