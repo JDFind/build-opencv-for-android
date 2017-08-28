@@ -44,7 +44,7 @@ python download_ndk.py
 cd "${WD}"
 if [ ! -d "${WD}/android-cmake" ]; then
     echo 'Cloning android-cmake'
-    git clone https://github.com/taka-no-me/android-cmake.git
+    git clone https://github.com/JDFind/android-cmake.git
 fi
 
 # checkout latest android-cmake
