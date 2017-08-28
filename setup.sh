@@ -14,6 +14,12 @@ function checkout_master() {
 	git reset --hard origin/master
 }
 
+function checkout_clean() {
+	git fetch
+	git -c advice.detachedHead=false checkout -f $1
+	git clean -fd
+}
+
 # read Open Cv version
 OPENCV_VERSION=3.3.0
 while getopts "v:" opts; do
@@ -60,8 +66,7 @@ fi
 
 # checkout the specified version of OpenCV
 cd opencv
-git fetch
-git -c advice.detachedHead=false checkout -f "${OPENCV_VERSION}"
+checkout_clean "${OPENCV_VERSION}"
 
 # clone OpenCV Contrib
 cd "${WD}"
@@ -72,8 +77,7 @@ fi
 
 # checkout the specified version of OpenCV Contrib
 cd opencv_contrib
-git fetch
-git -c advice.detachedHead=false checkout -f "${OPENCV_VERSION}"
+checkout_clean "${OPENCV_VERSION}"
 
 cd "${WD}"
 
