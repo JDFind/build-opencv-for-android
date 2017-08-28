@@ -1,8 +1,7 @@
 #!/bin/bash
 
 ### ABIs setup
-#declare -a ANDROID_ABI_LIST=("x86" "x86_64" "armeabi-v7a with NEON" "arm64-v8a")
-declare -a ANDROID_ABI_LIST=("x86" "x86_64" "armeabi" "arm64-v8a" "armeabi-v7a" "mips" "mips64")
+declare -a ANDROID_ABI_LIST=("armeabi" "armeabi-v7a" "arm64-v8a" "x86" "x86_64" "mips" "mips64")
 
 ### path setup
 SCRIPT=$(readlink -f $0)
