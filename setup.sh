@@ -7,6 +7,13 @@
 # Usage:
 #     $ ./setup.sh [-v <opencv_version>]
 
+# Define function
+function checkout_master() {
+	git fetch
+	git checkout -f master
+	git reset --hard origin/master
+}
+
 # read Open Cv version
 OPENCV_VERSION=3.3.0
 while getopts "v:" opts; do
@@ -28,9 +35,7 @@ fi
 
 # checkout latest android-ndk-downloader
 cd android-ndk-downloader
-git fetch
-git checkout -f master
-git pull
+checkout_master
 
 # launch android-ndk-downloader
 python download_ndk.py
@@ -41,6 +46,10 @@ if [ ! -d "${WD}/android-cmake" ]; then
     echo 'Cloning android-cmake'
     git clone https://github.com/taka-no-me/android-cmake.git
 fi
+
+# checkout latest android-cmake
+cd android-cmake
+checkout_master
 
 # clone OpenCV
 cd "${WD}"
