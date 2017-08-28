@@ -1,9 +1,9 @@
 #!/bin/bash
 
-### ABIs setup
+# ABIs setup
 declare -a ANDROID_ABI_LIST=("armeabi" "armeabi-v7a" "arm64-v8a" "x86" "x86_64" "mips" "mips64")
 
-### path setup
+# path setup
 SCRIPT=$(readlink -f $0)
 WD=`dirname $SCRIPT`
 OPENCV_ROOT="${WD}/opencv"
@@ -11,8 +11,9 @@ N_JOBS=${N_JOBS:-4}
 
 INSTALL_DIR="${WD}/android_opencv"
 rm -rf "${INSTALL_DIR}/opencv"
+mkdir -p "${INSTALL_DIR}/opencv"
 
-### Make each ABI target iteratly and sequentially
+# Make each ABI target sequentially
 for i in "${ANDROID_ABI_LIST[@]}"
 do
     ANDROID_ABI="${i}"
@@ -47,12 +48,19 @@ do
 		  -D BUILD_SHARED_LIBS=OFF \
           -D OPENCV_EXTRA_MODULES_PATH="${WD}/opencv_contrib/modules/"  \
           ../..
+		  
     # Build it
     make -j${N_JOBS}
+	
     # Install it
     make install/strip
-    ### Remove temp build folder
+	
+    # Remove temp build folder
     cd "${WD}"
     rm -rf "${temp_build_dir}"
+	
     echo "end building ${ANDROID_ABI} version"
 done
+
+echo "Press any key to continue..."
+read answer
