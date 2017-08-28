@@ -29,7 +29,7 @@ fi
 # checkout latest android-ndk-downloader
 cd android-ndk-downloader
 git fetch
-git checkout master
+git checkout -f master
 git pull
 
 # launch android-ndk-downloader
@@ -45,7 +45,7 @@ fi
 # checkout the specified version of OpenCV
 cd opencv
 git fetch
-git checkout -b "${OPENCV_VERSION}" "${OPENCV_VERSION}"
+git -c advice.detachedHead=false checkout -f "${OPENCV_VERSION}"
 
 # clone Open CV Contrib
 cd "${WD}"
@@ -57,7 +57,7 @@ fi
 # checkout the specified version of OpenCV Contrib
 cd opencv_contrib
 git fetch
-git checkout -b "${OPENCV_VERSION}" "${OPENCV_VERSION}"
+git -c advice.detachedHead=false checkout -f "${OPENCV_VERSION}"
 
 cd "${WD}"
 
