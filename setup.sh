@@ -35,7 +35,14 @@ git pull
 # launch android-ndk-downloader
 python download_ndk.py
 
-# clone Open CV
+# download android-cmake
+cd "${WD}"
+if [ ! -d "${WD}/android-cmake" ]; then
+    echo 'Cloning android-cmake'
+    git clone https://github.com/taka-no-me/android-cmake.git
+fi
+
+# clone OpenCV
 cd "${WD}"
 if [ ! -d "${WD}/opencv" ]; then
     echo 'Cloning opencv'
@@ -47,7 +54,7 @@ cd opencv
 git fetch
 git -c advice.detachedHead=false checkout -f "${OPENCV_VERSION}"
 
-# clone Open CV Contrib
+# clone OpenCV Contrib
 cd "${WD}"
 if [ ! -d "${WD}/opencv_contrib" ]; then
     echo 'Cloning opencv_contrib'

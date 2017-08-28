@@ -11,12 +11,6 @@ WD=`dirname $SCRIPT`
 OPENCV_ROOT="${WD}/opencv"
 N_JOBS=${N_JOBS:-4}
 
-### Download android-cmake
-if [ ! -d "${WD}/android-cmake" ]; then
-    echo 'Cloning android-cmake'
-    git clone https://github.com/taka-no-me/android-cmake.git
-fi
-
 INSTALL_DIR="${WD}/android_opencv"
 rm -rf "${INSTALL_DIR}/opencv"
 
