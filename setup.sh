@@ -30,7 +30,7 @@ WD=`dirname $SCRIPT`
 # clone android-ndk-downloader
 if [ ! -d "${WD}/android-ndk-downloader" ]; then
     echo 'Cloning android-ndk-downloader'
-    git clone https://github.com/tzutalin/android-ndk-downloader.git
+    git clone https://github.com/JDFind/android-ndk-downloader.git
 fi
 
 # checkout latest android-ndk-downloader
